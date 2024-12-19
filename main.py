@@ -1,4 +1,5 @@
 import pygame
+import sys
 from contants import *
 import player as Player
 from asteroid import *
@@ -30,7 +31,9 @@ def main():
     
     pygame.display.set_caption("Asteroids")   
 
-    while True:
+    game_running = True
+
+    while game_running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
@@ -41,6 +44,13 @@ def main():
         
         for x in updatable:
             x.update(dt)
+        
+        for z in asteroids:
+            if z.collisions(player):
+                game_running = False
+                print("Game Over1")
+                sys.exit()
+            
         
         pygame.display.flip()
         dt = game_clock.tick(60) / 1000
