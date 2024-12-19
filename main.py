@@ -10,10 +10,10 @@ def main():
     dt = 0
 
     # groups
-    updateable = pygame.sprite.Group()
+    updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
 
-    Player.Player.containers = (updateable, drawable)
+    Player.Player.containers = (updatable, drawable)
 
     player = Player.Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
@@ -32,7 +32,7 @@ def main():
         for y in drawable:
             y.draw(screen)
         
-        for x in updateable:
+        for x in updatable:
             x.update(dt)
         
         pygame.display.flip()
